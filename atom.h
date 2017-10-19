@@ -44,19 +44,25 @@ class Atom : public Term{
 	  }
 
 	  bool match(Term &a) {
-
-			  _assignable = true;
-		  if (a.ptr())
-		  {
-			  if (a.value().length() == 0) {
-				  *a.ptr() = _symbol;
-			  }
-			  else if (a.value() != *_symbol)
+		  Atom * ps = dynamic_cast<Atom *>(&a);
+		  _assignable = true;
+		  if (ps) {
+			  if (ps->symbol() != *_symbol)
 				  _assignable = false;
-			  else
-				  _assignable = true;
-			  return _assignable;
 		  }
+			 else {
+				 if (a.ptr())
+				 {
+					 if (a.value().length() == 0) {
+						 *a.ptr() = _symbol;
+					 }
+					 else if (a.value() != *_symbol)
+						 _assignable = false;
+					 else
+						 _assignable = true;				
+				 }
+			 }
+			 return _assignable;
 	  }
 
 private:
