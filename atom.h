@@ -23,8 +23,8 @@ class Term{
 	  virtual bool match(Term & term) {
 		return symbol() == term.symbol();
 	  }
-	  string *_symbol = new string[100];
-	  string *_value = new string[100];
+	  string *_symbol;
+	  string *_value;
 
 };
 
@@ -55,7 +55,7 @@ class Atom : public Term{
 				 if (a.ptr())
 				 {
 					 if (a.value().length() == 0) {
-						 *a._value = *_value;
+						 **a.ptr() = *_value;
 					 }
 					 else if (a.value() != *_value)
 						 _assignable = false;
@@ -65,7 +65,7 @@ class Atom : public Term{
 			 }
 			 return _assignable;
 	  }
-	  string *_value = new string[100];
+	  string *_value = new string[1];
 private:
 	
 	bool _assignable;
