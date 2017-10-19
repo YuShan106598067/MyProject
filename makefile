@@ -8,7 +8,7 @@ else
 endif
 	
 main.o: main.cpp utAtom.h utStruct.h utVariable.h
-	g++ -std=gnu++0x -c mainTerm.cpp
+	g++ -std=gnu++0x -c main.cpp
 
 
 clean:	
