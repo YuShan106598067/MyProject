@@ -55,8 +55,9 @@ class Atom : public Term{
 				 if (a.ptr())
 				 {
 					 if (a.value().length() == 0) {
+						  **a.ptr() = *_value	
 						 *a.ptr() = _value;
-						 **a.ptr() = *_value;
+					;
 					 }
 					 else if (a.value() != *_value)
 						 _assignable = false;
