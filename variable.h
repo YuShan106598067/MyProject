@@ -26,7 +26,7 @@ class Variable : public Term {
 		  if (_value->length() == 0){
 			 *_value = a.value();
 		  }
-		  if (_value->length() == 0 && a.value().length() == 0) {
+		  if (a.value().length() == 0) {
 			 *a.ptr() = _value ;
 			 *_value = a.symbol();
 		  }
