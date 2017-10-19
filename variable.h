@@ -26,19 +26,12 @@ class Variable : public Term {
 		  _assignable = true;
 
 		  if ((*_value).length() == 0 && a.value().length() != 0) {
-			  if (a.ptr() != NULL) {
-				  _value = *a.ptr();
-			  }
-			  else {
-				  *_value = a.value();
-			  }
+				  *_value = a.value();			  
 		  }
 
 		  if (a.value().length() == 0) 
 			  *a.ptr() = _value;
-		  
-		  if ( a.value().length() == 0) 
-			 *_value = a.symbol();
+
 
 		  if (a.value() != *_value )
 			  _assignable = false;
