@@ -23,24 +23,24 @@ class Term{
 	  virtual bool match(Term & term) {
 		return symbol() == term.symbol();
 	  }
-	  
+
 
 };
 
 class Atom : public Term{
 	public:
-	  Atom (string s) :_symbol(s) {
-		  *_value = s;
+	  Atom (string s) {
+		  *_symbol = s;
 	  }
 
 	  string symbol() const {
-		  return _symbol;
+		  return *_symbol;
 	  }
 	  string value()  {
-		  return (*_value);
+		  return (*_symbol);
 	  }
 	  string **ptr() {
-		  return &_value;
+		  return &_symbol;
 	  }
 
 	  bool match(Term &a) {
@@ -49,9 +49,9 @@ class Atom : public Term{
 		  if (a.ptr())
 		  {
 			  if (a.value().length() == 0) {
-				  **a.ptr() = _symbol;
+				  *a.ptr() = _symbol;
 			  }
-			  else if (a.value() != *_value)
+			  else if (a.value() != *_symbol)
 				  _assignable = false;
 			  else
 				  _assignable = true;
@@ -60,9 +60,10 @@ class Atom : public Term{
 	  }
 
 private:
+	
 	bool _assignable;
-	string _symbol;
-	string *_value = new string[1];
+	string *_symbol = new string[1];
+
 
 };
 
