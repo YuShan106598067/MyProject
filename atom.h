@@ -40,7 +40,7 @@ class Atom : public Term{
 		  return (*_value);
 	  }
 	  string **ptr() {
-		  return NULL;
+		  return &_value;
 	  }
 
 	  bool match(Term &a) {
