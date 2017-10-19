@@ -35,7 +35,7 @@ public:
 
 		string ret = _name->symbol() + "(";
 		for (int i = 0; i < _args.size() - 1; i++){
-			if (_args[_args.size() - 1]->value().length() == 0)
+			if (_args[i]->value().length() == 0)
 				ret += _args[i]->symbol() + ", ";
 			else
 				ret += _args[i]->value() + ", ";
