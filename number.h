@@ -11,34 +11,34 @@ class Number : public Term {
 public:
 	Number(double s){
 		ss << s;
-		*_symbol = ss.str();
+		_symbol = ss.str();
 	}
 	
 	string symbol() const {
-		return *_symbol;
+		return _symbol;
 	}
 	string value() const{
-		return *_symbol;
+		return _symbol;
 	}
 
 	string **ptr() {
-		return &_symbol;
+		return NULL;
 	}
 
 	bool match(Term &a) {
 		Number * ps = dynamic_cast<Number *>(&a);
 		_assignable = true;
 		if (ps) {
-			if (ps->symbol() != *_symbol)
+			if (ps->symbol() != _symbol)
 				_assignable = false;
 		}
 		else {
 			if (a.ptr())
 			{
 				if (a.value().length() == 0) {
-					*a.ptr() = _symbol;
+					**a.ptr() = _symbol;
 				}
-				else if (a.value() != *_symbol)
+				else if (a.value() != _symbol)
 					_assignable = false;
 				else
 					_assignable = true;
@@ -50,7 +50,7 @@ public:
 private:
 	std::stringstream ss;
 	bool _assignable;
-	string *_symbol = new string[1];
+	string _symbol ;
 
 };
 
