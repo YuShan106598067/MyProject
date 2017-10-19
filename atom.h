@@ -44,16 +44,19 @@ class Atom : public Term{
 	  }
 
 	  bool match(Term &a) {
-		  _assignable = true;
 
-		  if (a.value().length() == 0) {
-			  **a.ptr() = _symbol;
-		  }
-		  else if (a.value() != *_value)
-			  _assignable = false;
-		  else
 			  _assignable = true;
-		  return _assignable;
+		  if (a.ptr())
+		  {
+			  if (a.value().length() == 0) {
+				  **a.ptr() = _symbol;
+			  }
+			  else if (a.value() != *_value)
+				  _assignable = false;
+			  else
+				  _assignable = true;
+			  return _assignable;
+		  }
 	  }
 
 private:
