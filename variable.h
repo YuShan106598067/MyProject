@@ -31,10 +31,10 @@ class Variable : public Term {
 		  {
 			  if ((*_value).length() == 0 && a.value().length() != 0) {
 				  if (ps) 
-					  _value = a._value;
+					  _value = (*ps)._value;
 				  else {
 					  *_value = *a._value;
-					  a._value = _value;
+					  (*ps)._value = _value;
 				  }
 			  }
 			  if (a.value().length() == 0)
