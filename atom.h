@@ -30,33 +30,33 @@ class Term{
 class Atom : public Term{
 	public:
 	  Atom (string s) {
-		  _symbol = s;
+		  *_symbol = s;
 	  }
 
 	  string symbol() const {
-		  return _symbol;
+		  return *_symbol;
 	  }
 	  string value()  {
-		  return (_symbol);
+		  return (*_symbol);
 	  }
 	  string **ptr() {
-		  return NULL;
+		  return &_symbol;
 	  }
 
 	  bool match(Term &a) {
 		  Atom * ps = dynamic_cast<Atom *>(&a);
 		  _assignable = true;
 		  if (ps) {
-			  if (ps->symbol() != _symbol)
+			  if (ps->symbol() != *_symbol)
 				  _assignable = false;
 		  }
 			 else {
 				 if (a.ptr())
 				 {
 					 if (a.value().length() == 0) {
-						 **a.ptr() = _symbol;
+						 *a.ptr() = _symbol;
 					 }
-					 else if (a.value() != _symbol)
+					 else if (a.value() != *_symbol)
 						 _assignable = false;
 					 else
 						 _assignable = true;				
@@ -68,7 +68,7 @@ class Atom : public Term{
 private:
 	
 	bool _assignable;
-	string _symbol ;
+	string *_symbol = new string[1];
 
 
 };
