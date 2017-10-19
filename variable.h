@@ -22,17 +22,21 @@ class Variable : public Term {
 		  return &_value;
 	  }
 	  bool match(Term &a){
+		  int i = 0;
 		  _assignable = true;
 
 		  if ((*_value).length() == 0 && a.value().length() != 0) {
-			  if (a.ptr())
-				 _value = *a.ptr();
-			  else
-				 *_value = a.value();
+			  if (a.ptr() != NULL) {
+				  _value = *a.ptr();
+			  }
+			  else {
+				  *_value = a.symbol();
+			  }
 		  }
 
 		  if (a.value().length() == 0) 
 			  *a.ptr() = _value;
+
 
 		  if (a.value() != *_value )
 			  _assignable = false;
@@ -48,4 +52,3 @@ class Variable : public Term {
 };
 
 #endif
-
