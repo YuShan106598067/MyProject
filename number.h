@@ -30,10 +30,12 @@ public:
 		_assignable = true;
 
 		if (a.value().length() == 0) {
-			**a.ptr() = *_value;
+			**a.ptr() = _symbol;
 		}
-		if (a.value() != *_value && a.value().length() != 0)
+		else if (a.value() != *_value)
 			_assignable = false;
+		else
+			_assignable = true;
 		return _assignable;
 	}
 
