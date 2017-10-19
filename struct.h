@@ -11,20 +11,20 @@ using std::string;
 class Struct :public Term
 {
 public:
-	Struct(Atom const & name, std::vector<Term *> args) :_args(args) {
-		Term * _test = new Atom(name.symbol());
-		_name = _test;
-	}
+	Struct(Atom const & name, std::vector<Term *> args) :_name(name), _args(args) {}
 
 	Term * args(int index) {
 		return _args[index];
 	}
+	string **ptr() {
+		return NULL;
+	}
 
-	Term const & name() {
-		return *_name;
+	Atom const & name() {
+		return _name;
 	}
 	string symbol() const {
-		string ret = _name->symbol() + "(";
+		string ret = _name.symbol() + "(";
 		for (int i = 0; i < _args.size() - 1; i++) {
 			ret += _args[i]->symbol() + ", ";
 		}
@@ -33,7 +33,7 @@ public:
 	}
 	string value() const {
 
-		string ret = _name->symbol() + "(";
+		string ret = _name.symbol() + "(";
 		for (int i = 0; i < _args.size() - 1; i++){
 			if (_args[i]->value().length() == 0)
 				ret += _args[i]->symbol() + ", ";
@@ -50,7 +50,7 @@ public:
 	bool match(Term &term) {
 		Struct * ps = dynamic_cast<Struct *>(&term);
 		if (ps) {
-			if (!_name->match(*(ps->_name)))
+			if (!_name.match(ps->_name))
 				return false;
 			if (_args.size() != ps->_args.size())
 				return false;
@@ -63,7 +63,7 @@ public:
 		return false;
 	}
 private:
-	Term * _name ;
+	Atom _name ;
 	std::vector<Term *> _args;
 };
 
