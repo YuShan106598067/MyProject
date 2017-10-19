@@ -36,7 +36,7 @@ public:
 			if (a.ptr())
 			{
 				if (a.value().length() == 0) {
-					*a._value = *_value;
+					**a.ptr() = *_value;
 				}
 				else if (a.value() != *_value)
 					_assignable = false;
