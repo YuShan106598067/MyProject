@@ -31,14 +31,14 @@ class Variable : public Term {
 		  {
 			  if ((*_value).length() == 0 && a.value().length() != 0) {
 				  if (ps) 
-					  _value = (*ps)._value;
+					  _value = *a.ptr();
 				  else {
-					  *_value = *a._value;
-					  a._value = _value;
+					  *_value = **a.ptr();
+					  *a.ptr() = _value;
 				  }
 			  }
 			  if (a.value().length() == 0)
-				  a._value = _value;
+				  *a.ptr() = _value;
 
 			  if (a.value() != *_value)
 				  _assignable = false;
