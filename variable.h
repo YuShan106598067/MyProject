@@ -26,8 +26,10 @@ class Variable : public Term {
 		  _assignable = true;
 		  if (a.ptr())
 		  {
+
 			  if ((*_value).length() == 0 && a.value().length() != 0) {
-				  *_value = **a.ptr();
+				  if (a.ptr())
+					  *_value = **a.ptr();
 			  }
 
 			  if (a.value().length() == 0)
@@ -46,11 +48,12 @@ class Variable : public Term {
 		  return _assignable;
 		
 	  }
-	  
+
 	private:
+		string *_value = new string[1];
 	  bool _assignable;
 	  string _symbol;
-	  string *_value = new string[1];
+
 
 };
 
