@@ -28,6 +28,7 @@ class Variable : public Term {
 		  }
 		  if (_value->length() == 0 && a.value().length() == 0) {
 			 *a.ptr() = _value ;
+			  *_value = _symbol;
 		  }
 		  if (a.value() != *_value)
 			  _assignable = false;
