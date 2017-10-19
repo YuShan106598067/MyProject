@@ -30,14 +30,14 @@ class Term{
 class Atom : public Term{
 	public:
 	  Atom (string s) :_symbol(s) {
-		  *_value = s;
+		  _value = s;
 	  }
 
 	  string symbol() const {
 		  return _symbol;
 	  }
 	  string value()  {
-		  return (*_value);
+		  return (_value);
 	  }
 	  string **ptr() {
 		  return NULL;
@@ -47,21 +47,20 @@ class Atom : public Term{
 		  _assignable = true;
 
 		  if (a.value().length() == 0) {
-			  **a.ptr() = *_value;
+			  **a.ptr() = _value;
 		  }
-		  if (a.value() != *_value && a.value().length()!=0)
+		  if (a.value() != _value && a.value().length()!=0)
 			  _assignable = false;
+
 		  return _assignable;
 	  }
 
 private:
 	bool _assignable;
 	string _symbol;
-	string *_value = new string[1];
+	string _value ;
 
 };
 
 
 #endif
-
-
