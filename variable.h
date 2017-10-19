@@ -16,7 +16,7 @@ class Variable : public Term {
 		  return _symbol;
 	  }
 	  string value() const {
-		  return *_value;
+		  return _symbol;
 	  }
 	  string **ptr() {
 		  return &_value;
@@ -26,10 +26,8 @@ class Variable : public Term {
 		  _assignable = true;
 		  if (a.ptr())
 		  {
-
 			  if ((*_value).length() == 0 && a.value().length() != 0) {
-				if (a.ptr())
-				  _value = *a.ptr();
+				  *_value = **a.ptr();
 			  }
 
 			  if (a.value().length() == 0)
