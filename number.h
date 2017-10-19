@@ -28,15 +28,17 @@ public:
 
 	bool match(Term &a) {
 		_assignable = true;
-
-		if (a.value().length() == 0) {
-			**a.ptr() = _symbol;
+		if (a.ptr())
+		{
+			if (a.value().length() == 0) {
+				**a.ptr() = _symbol;
+			}
+			else if (a.value() != *_value)
+				_assignable = false;
+			else
+				_assignable = true;
+			return _assignable;
 		}
-		else if (a.value() != *_value)
-			_assignable = false;
-		else
-			_assignable = true;
-		return _assignable;
 	}
 
 private:
