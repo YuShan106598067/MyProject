@@ -26,18 +26,25 @@ public:
 	}
 
 	bool match(Term &a) {
+		Number * ps = dynamic_cast<Number *>(&a);
 		_assignable = true;
-		if (a.ptr())
-		{
-			if (a.value().length() == 0) {
-				*a.ptr() = _symbol;
-			}
-			else if (a.value() != *_symbol)
+		if (ps) {
+			if (ps->symbol() != *_symbol)
 				_assignable = false;
-			else
-				_assignable = true;
-			return _assignable;
 		}
+		else {
+			if (a.ptr())
+			{
+				if (a.value().length() == 0) {
+					*a.ptr() = _symbol;
+				}
+				else if (a.value() != *_symbol)
+					_assignable = false;
+				else
+					_assignable = true;
+			}
+		}
+		return _assignable;
 	}
 
 private:
