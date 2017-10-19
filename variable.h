@@ -28,7 +28,6 @@ class Variable : public Term {
 		  }
 		  if (a.value().length() == 0) {
 			 *a.ptr() = _value ;
-			 *_value = a.symbol();
 		  }
 		  if (a.value() != *_value)
 			  _assignable = false;
