@@ -35,14 +35,14 @@ public:
 
 		string ret = _name->symbol() + "(";
 		for (int i = 0; i < _args.size() - 1; i++){
-			//if (_args[_args.size() - 1]->value().length() == 0)
-				//ret += _args[i]->symbol() + ", ";
-			//else
+			if (_args[_args.size() - 1]->value().length() == 0)
+				ret += _args[i]->symbol() + ", ";
+			else
 				ret += _args[i]->value() + ", ";
 		}
-		//if ( _args[_args.size() - 1]->value().length()==0)
-			//ret += _args[_args.size() - 1]->symbol() + ")";
-		//else 
+		if ( _args[_args.size() - 1]->value().length()==0)
+			ret += _args[_args.size() - 1]->symbol() + ")";
+		else 
 			ret += _args[_args.size() - 1]->value() + ")";
 
 		return  ret;
