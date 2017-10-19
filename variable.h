@@ -23,15 +23,20 @@ class Variable : public Term {
 	  }
 	  bool match(Term &a){
 		  _assignable = true;
-		  if (_value->length() == 0){
-			 *_value = a.value();
-		  }
-		  if (a.value().length() == 0) {
-			 *a.ptr() = _value ;
-		  }
 
-		  if (a.value() != *_value && a.value().length() != 0 &&  (*_value).length() != 0)
+		  if (_value->length() == 0 && a.value().length() != 0)
+			 *_value = a.value();
+		  
+		  if (_value->length() != 0 && a.value().length() == 0)
+			  *a.ptr() = _value;
+
+		  if (a.value().length() == 0) 
+			 *a.ptr() = _value;
+
+		  if (a.value() != *_value )
 			  _assignable = false;
+		  else
+			  a.value() = *_value;
 		  return _assignable;
 	  }
 	  
