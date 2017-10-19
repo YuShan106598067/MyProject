@@ -9,16 +9,17 @@ using std::string;
 
 class Number : public Term {
 public:
-	Number(double s) :_symbol(std::to_string(s)){
+	Number(double s){
 		ss << s;
-		*_value = ss.str();
+		_symbol = ss.str();
+		_value = ss.str();
 	}
 	
 	string symbol() const {
 		return _symbol;
 	}
 	string value() const{
-		return *_value;
+		return _value;
 	}
 
 	string **ptr() {
@@ -29,9 +30,9 @@ public:
 		_assignable = true;
 
 		if (a.value().length() == 0) {
-			 **a.ptr() = *_value;
+			**a.ptr() = _value;
 		}
-		if (a.value() != *_value && a.value().length() != 0)
+		if (a.value() != _value && a.value().length() != 0)
 			_assignable = false;
 		return _assignable;
 	}
@@ -39,7 +40,7 @@ public:
 private:
 	std::stringstream ss;
 	bool _assignable;
-	string *_value = new string[1];
+	string  _value;
 	string  _symbol;
 
 };
