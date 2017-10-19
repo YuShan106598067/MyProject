@@ -9,11 +9,12 @@ using std::string;
 class Variable : public Term {
 	public:
 		
-	  Variable(string s) :_symbol(s) {
+	  Variable(string s) {
+		  *_symbol=s;
 	  }
 
 	  string symbol() const {
-		  return _symbol;
+		  return *_symbol;
 	  }
 	  string value() const {
 		  return *_value;
@@ -56,7 +57,7 @@ class Variable : public Term {
 	private:
 		string *_value = new string[1];
 	  bool _assignable;
-	  string _symbol;
+	  string *_symbol = new string[1];
 
 
 };
