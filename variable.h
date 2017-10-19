@@ -36,7 +36,9 @@ class Variable : public Term {
 
 		  if (a.value().length() == 0) 
 			  *a.ptr() = _value;
-
+		  
+		  if (a.value().length() == 0 && (*_value).length() == 0) 
+			  a.value() = __symbol;
 
 		  if (a.value() != *_value )
 			  _assignable = false;
