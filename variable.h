@@ -30,7 +30,7 @@ class Variable : public Term {
 			 *a.ptr() = _value ;
 		  }
 
-		  if (a.value() != *_value)
+		  if (a.value() != *_value && a.value().length() != 0 && *_value != 0)
 			  _assignable = false;
 		  return _assignable;
 	  }
