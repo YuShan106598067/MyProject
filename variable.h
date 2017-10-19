@@ -28,8 +28,8 @@ class Variable : public Term {
 		  {
 
 			  if ((*_value).length() == 0 && a.value().length() != 0) {
-				  if (a.ptr())
-					  *_value = **a.ptr();
+				if (a.ptr())
+				  _value = *a.ptr();
 			  }
 
 			  if (a.value().length() == 0)
@@ -40,7 +40,7 @@ class Variable : public Term {
 		  }
 		  else
 		  {
-			  if (this->_value->length() == 0) 
+			  if (_value->length() == 0) 
 				  *_value = a.value();
 			  else 
 				  _assignable = false;
