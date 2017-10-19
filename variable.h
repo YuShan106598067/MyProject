@@ -16,7 +16,7 @@ class Variable : public Term {
 		  return _symbol;
 	  }
 	  string value() const {
-		  return _symbol;
+		  return *_value;
 	  }
 	  string **ptr() {
 		  return &_value;
