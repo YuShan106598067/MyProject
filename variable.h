@@ -24,12 +24,15 @@ class Variable : public Term {
 	  bool match(Term &a) {
 		  int i = 0;
 		  _assignable = true;
+		  Variable * ps = dynamic_cast<Variable *>(&a);
 
 		  if (a.ptr())
 		  {
-			  if ((*_value).length() == 0 && a.value().length() != 0) 
-				 _value = *a.ptr();
-
+			  if ((*_value).length() == 0 && a.value().length() != 0) {
+				  if (ps) 
+					  _value = *a.ptr();
+				  *_value = **a.ptr();
+			  }
 			  if (a.value().length() == 0)
 				  *a.ptr() = _value;
 
