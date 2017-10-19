@@ -6,12 +6,11 @@
 
 using std::string;
 
-
 class Variable : public Term {
 	public:
 		
 	  Variable(string s) {
-		  *_symbol=s;
+		  *_symbol = s;
 	  }
 
 	  string symbol() const {
@@ -32,14 +31,14 @@ class Variable : public Term {
 		  {
 			  if ((*_value).length() == 0 && a.value().length() != 0) {
 				  if (ps) 
-					  _value = *a.ptr();
+					  _value = a._value;
 				  else {
-					  *_value = **a.ptr();
-					  *a.ptr() = _value;
+					  *_value = *a._value;
+					  a._value = _value;
 				  }
 			  }
 			  if (a.value().length() == 0)
-				  *a.ptr() = _value;
+				  a._value = _value;
 
 			  if (a.value() != *_value)
 				  _assignable = false;
@@ -54,11 +53,11 @@ class Variable : public Term {
 		  return _assignable;
 		
 	  }
-
+		string *_value = new string[100];
 	private:
-		string *_value = new string[1];
+
 	  bool _assignable;
-	  string *_symbol = new string[1];
+	  string *_symbol = new string[100];
 
 
 };
