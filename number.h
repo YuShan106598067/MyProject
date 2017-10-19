@@ -11,19 +11,18 @@ class Number : public Term {
 public:
 	Number(double s){
 		ss << s;
-		_symbol = ss.str();
-		*_value = ss.str();
+		*_symbol = ss.str();
 	}
 	
 	string symbol() const {
-		return _symbol;
+		return *_symbol;
 	}
 	string value() const{
-		return *_value;
+		return *_symbol;
 	}
 
 	string **ptr() {
-		return &_value;
+		return &_symbol;
 	}
 
 	bool match(Term &a) {
@@ -31,9 +30,9 @@ public:
 		if (a.ptr())
 		{
 			if (a.value().length() == 0) {
-				**a.ptr() = _symbol;
+				*a.ptr() = _symbol;
 			}
-			else if (a.value() != *_value)
+			else if (a.value() != *_symbol)
 				_assignable = false;
 			else
 				_assignable = true;
@@ -44,8 +43,7 @@ public:
 private:
 	std::stringstream ss;
 	bool _assignable;
-	string *_value = new string[1];
-	string  _symbol;
+	string *_symbol = new string[1];
 
 };
 
