@@ -10,7 +10,6 @@ class Variable : public Term {
 	public:
 		
 	  Variable(string s) :_symbol(s) {
-		  *_value = s;
 	  }
 
 	  string symbol() const {
