@@ -24,26 +24,18 @@ class Variable : public Term {
 	  bool match(Term &a){
 		  _assignable = true;
 
-		  if (a.value().length() == 0) 
-			  *a.ptr() = _value;
-
-		  if (_value->length() == 0 && a.value().length() != 0) {
+		  if ((*_value).length() == 0) {
 			  if (a.ptr())
 				  _value = *a.ptr();
 			  else
-				  *_value = a.value();		  
+				  *_value = a.value();
 		  }
-		  if (_value->length() != 0 && a.value().length() == 0)
+		  if (a.value().length() == 0) 
 			  *a.ptr() = _value;
 
 		  if (a.value() != *_value )
 			  _assignable = false;
-		  else {
-			  if (a.ptr())
-				  *a.ptr() = _value;
-			  else
-				  a.value() = *_value;
-		  }
+
 		  return _assignable;
 	  }
 	  
