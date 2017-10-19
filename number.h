@@ -23,7 +23,7 @@ public:
 	}
 
 	string **ptr() {
-		return NULL;
+		return &_value;
 	}
 
 	bool match(Term &a) {
