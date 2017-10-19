@@ -30,7 +30,7 @@ class Variable : public Term {
 				  _value = *a.ptr();
 			  }
 			  else {
-				  *_value = a.symbol();
+				  *_value = a.value();
 			  }
 		  }
 
