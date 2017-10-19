@@ -6,6 +6,7 @@
 
 using std::string;
 
+
 class Variable : public Term {
 	public:
 		
