@@ -22,14 +22,14 @@ public:
 	}
 
 	string **ptr() {
-		return &_value;
+		return NULL;
 	}
 
 	bool match(Term &a) {
 		_assignable = true;
 
 		if (a.value().length() == 0) {
-			*a.ptr() = _value;
+			 **a.ptr() = *_value;
 		}
 		if (a.value() != *_value && a.value().length() != 0)
 			_assignable = false;
