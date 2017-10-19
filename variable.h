@@ -21,23 +21,32 @@ class Variable : public Term {
 	  string **ptr() {
 		  return &_value;
 	  }
-	  bool match(Term &a){
+	  bool match(Term &a) {
 		  int i = 0;
 		  _assignable = true;
+		  if (a.ptr())
+		  {
 
-		  if ((*_value).length() == 0 && a.value().length() != 0) {
-			  if(a.ptr())
-				  *_value = **a.ptr();			  
+			  if ((*_value).length() == 0 && a.value().length() != 0) {
+				  if (a.ptr())
+					  *_value = **a.ptr();
+			  }
+
+			  if (a.value().length() == 0)
+				  *a.ptr() = _value;
+
+			  if (a.value() != *_value)
+				  _assignable = false;
 		  }
-
-		  if (a.value().length() == 0) 
-			  *a.ptr() = _value;
-
-
-		  if (a.value() != *_value )
-			  _assignable = false;
-
+		  else
+		  {
+			  if (this->_value->length() == 0) 
+				  *_value = a.value();
+			  else 
+				  _assignable = false;
+		  }
 		  return _assignable;
+		
 	  }
 	  
 	private:
