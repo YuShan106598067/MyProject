@@ -31,7 +31,7 @@ class Variable : public Term {
 		  {
 			  if ((*_value).length() == 0 && a.value().length() != 0) {
 				  if (ps) 
-					  _value = *a.ptr();
+					  _value = (*ps)._value;
 				  else {
 					  *_value = **a.ptr();
 					  *a.ptr() = _value;
