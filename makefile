@@ -2,9 +2,9 @@ all: hw4
 
 hw4: main.o atom.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw4 main.o atom.o -lgtest
+	g++ -o hw4 main.o atom.o list.o -lgtest
 else
-	g++ -o hw4 main.o atom.o -lgtest -lpthread
+	g++ -o hw4 main.o atom.o list.o -lgtest -lpthread
 endif
 	
 main.o: main.cpp utAtom.h utStruct.h utList.h utScanner.h utVariable.h
