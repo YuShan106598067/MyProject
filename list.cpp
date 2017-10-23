@@ -3,15 +3,9 @@
 #include "atom.h"
 #include "variable.h"
 #include <typeinfo>
-/*string List::symbol() const
-{
-	return string();
-}*/
-
 
 bool List::match(Term & a)
 {
-	
 	if (typeid(a) == typeid(Variable)) {
 		for (int i = 0; i < _elements.size(); i++) {
 			if (_elements[i]->symbol() == a.symbol())
@@ -26,13 +20,7 @@ bool List::match(Term & a)
 				return false;
 			for (int i = 0; i<_elements.size(); i++) {
 				if (_elements[i]->symbol() != ps->_elements[i]->symbol()) {		
-					if (_elements[i]->value() == _elements[i]->symbol()) {
-						_elements[i]->match(*ps->_elements[i]);
-					}
-					else if (ps->_elements[i]->value() == ps->_elements[i]->symbol()) {
-						ps->_elements[i]->match(*_elements[i]);
-					}
-					else
+					if (!_elements[i]->match(*ps->_elements[i]))
 						return false;
 				}
 			}
@@ -41,10 +29,7 @@ bool List::match(Term & a)
 		return false;
 	}
 	else
-		return symbol() == a.symbol();
-	
-	
-	
+		return symbol() == a.symbol();	
 
 }
 
