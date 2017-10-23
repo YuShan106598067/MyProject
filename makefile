@@ -1,4 +1,4 @@
-all: hw4 utAtom utVariable utNumber utStruct utList
+all: hw4 
 
 hw4: main.o
 ifeq (${OS}, Windows_NT)
