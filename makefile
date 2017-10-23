@@ -7,7 +7,7 @@ else
 	g++ -o hw4 main.o -lgtest -lpthread
 endif
 	
-main.o: main.cpp utAtom.h utStruct.h utVariable.h utScanner.h utList.h
+main.o: main.cpp utAtom.h utStruct.h utList.h utScanner.h utVariable.h
 	g++ -std=gnu++0x -c main.cpp
 
 
