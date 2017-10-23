@@ -1,6 +1,6 @@
 all: hw4
 
-hw4: main.o atom.o
+hw4: main.o atom.o list.o
 ifeq (${OS}, Windows_NT)
 	g++ -o hw4 main.o atom.o list.o -lgtest
 else
