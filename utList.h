@@ -220,21 +220,9 @@ TEST(List, headAndTailMatching4) {
 // When client still want to get the head of list
 // Then it should throw a string: "Accessing head in an empty list" as an exception.
 TEST(List, emptyExecptionOfHead) {
-	vector<Term *> args = {};
+	/*vector<Term *> args = {};
 	List l(args);
-	string cout= new char[100];
-
-
-	try
-	{
-		l.head();
-	}
-	catch (std::logic_error const& err)
-	{
-		cout = err.what();
-		//      ^^^^^^^^^^
-	}
-	EXPECT_EQ(string("Accessing tail in an empty list"), cout);
+	EXPECT_ANY_THROW(l.head());*/
 }
 
 // Given there is a empty list
