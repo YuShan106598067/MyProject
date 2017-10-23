@@ -41,13 +41,14 @@ public:
   }
   Term * head() const throw(string){
 
-	  std::vector<Term *>::const_iterator it = _elements.begin();
+	 std::vector<Term *>::const_iterator it = _elements.begin();
 	  if (it != _elements.end())
 		  return *it;
 	  else
 		  throw std::logic_error("Accessing head in an empty list");
+
   }
-  List * tail() const {
+  List * tail() const throw(string) {
 	  std::vector<Term *>::const_iterator it = _elements.begin();
 	  if (it != _elements.end()) {
 		  List  * tail = new List[10];
