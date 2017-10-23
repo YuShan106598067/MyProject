@@ -222,7 +222,8 @@ TEST(List, headAndTailMatching4) {
 TEST(List, emptyExecptionOfHead) {
 	vector<Term *> args = {};
 	List l(args);
-	string cout;
+	string cout= new char[100];
+
 
 	try
 	{
