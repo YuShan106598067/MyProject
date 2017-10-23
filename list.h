@@ -40,12 +40,12 @@ public:
   List (vector<Term *> const & elements):_elements(elements){
   }
   Term * head() const throw(string){
-
+	  const std::string& what_arg = "Accessing head in an empty list";
 	 std::vector<Term *>::const_iterator it = _elements.begin();
 	  if (it != _elements.end())
 		  return *it;
 	  else
-		  throw std::logic_error("Accessing head in an empty list");
+		  throw std::logic_error(what_arg);
 
   }
   List * tail() const throw(string) {
