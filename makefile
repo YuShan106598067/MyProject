@@ -1,4 +1,4 @@
-all: hw4 utAtom utVariable utNumber utStruct utList.h
+all: hw4 utAtom utVariable utNumber utStruct utList
 
 hw4: main.o
 ifeq (${OS}, Windows_NT)
@@ -15,7 +15,7 @@ clean:
 ifeq (${OS}, Windows_NT)
 	del *.o *.exe
 else
-	rm -f *.o hw* utAtom utNumber utVariable utStruct utTerm
+	rm -f *.o hw* utAtom utNumber utVariable utStruct utList
 endif
 
 stat:
