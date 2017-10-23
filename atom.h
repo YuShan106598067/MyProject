@@ -28,9 +28,6 @@ public:
   Atom(string s):Term(s) {}
 };
 
-class Number : public Term{
-public:
-  Number(double db):Term(db) {}
-};
+
 
 #endif
