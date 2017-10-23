@@ -1,15 +1,20 @@
 all: hw4
 
-hw4: main.o 
+hw4: main.o atom.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw4 main.o -lgtest
+	g++ -o hw4 main.o atom.o -lgtest
 else
-	g++ -o hw4 main.o -lgtest -lpthread
+	g++ -o hw4 main.o atom.o -lgtest -lpthread
 endif
 	
 main.o: main.cpp utAtom.h utStruct.h utList.h utScanner.h utVariable.h
 	g++ -std=gnu++0x -c main.cpp
+	
+atom.o: atom.cpp atom.h variable.h
+	g++ -std=c++11 -c atom.cpp
 
+list.o: list.cpp list.h atom.h variable.h
+	g++ -std=c++11 -c list.cpp
 
 clean:
 ifeq (${OS}, Windows_NT)
