@@ -42,10 +42,10 @@ public:
   Term * head() const throw(string){
 
 	  std::vector<Term *>::const_iterator it = _elements.begin();
-	 // if (it != _elements.end())
+	  if (it != _elements.end())
 		  return *it;
-	  //else
-		 // throw std::range_error("Accessing head in an empty list");
+	  else
+		 throw std::range_error("Accessing head in an empty list");
   }
   List * tail() const {
 	  std::vector<Term *>::const_iterator it = _elements.begin();
