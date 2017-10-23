@@ -45,7 +45,7 @@ public:
 	  if (it != _elements.end())
 		  return *it;
 	  else
-		  throw "Accessing head in an empty list";
+		  throw std::logic_error("Accessing head in an empty list");
   }
   List * tail() const {
 	  std::vector<Term *>::const_iterator it = _elements.begin();
@@ -56,7 +56,7 @@ public:
 		  return tail;
 	  }
 	  else
-		  throw "Accessing tail in an empty list";
+		  throw std::logic_error("Accessing tail in an empty list");
   }
 
 private:
