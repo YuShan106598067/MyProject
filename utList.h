@@ -222,7 +222,18 @@ TEST(List, headAndTailMatching4) {
 TEST(List, emptyExecptionOfHead) {
 	vector<Term *> args = {};
 	List l(args);
-	EXPECT_ANY_THROW(l.head());
+	string cout;
+
+	try
+	{
+		l.head();
+	}
+	catch (std::logic_error const& err)
+	{
+		cout = err.what();
+		//      ^^^^^^^^^^
+	}
+	EXPECT_EQ(string("Accessing tail in an empty list"), cout);
 }
 
 // Given there is a empty list
