@@ -1,8 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
-
-#include "atom.h"
 #include <stdexcept>
+#include "atom.h"
 #include <string>
 using std::string;
 
