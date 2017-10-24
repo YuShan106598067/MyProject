@@ -56,7 +56,7 @@ public:
 		  return tail;
 	  }
 	  else{
-		  throw std::exception("Accessing tail in an empty list");
+		  throw "Accessing tail in an empty list";
 		 return 0;
 	  }
   }
