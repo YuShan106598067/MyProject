@@ -44,7 +44,7 @@ public:
 	  if (it != _elements.end())
 		  return *it;
 	  else
-	  throw std::logic_error("Accessing head in an empty list");
+	  throw std::out_of_range("Accessing head in an empty list");
 
   }
   List * tail() const throw(string) {
@@ -56,7 +56,7 @@ public:
 		  return tail;
 	  }
 	  else
-		  throw std::logic_error("Accessing tail in an empty list");
+		  throw std::out_of_range("Accessing tail in an empty list");
   }
 
 private:
