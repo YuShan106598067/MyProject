@@ -39,7 +39,7 @@ public:
   List (): _elements() {}
   List (vector<Term *> const & elements):_elements(elements){
   }
-  Term * head() const: public std::out_of_range {
+  Term * head() const {
 	 std::vector<Term *>::const_iterator it = _elements.begin();
 	  if (it != _elements.end())
 		  return *it;
@@ -48,7 +48,7 @@ public:
 		  return 0;
 	  }
   }
-  List * tail() const: public std::out_of_range  {
+  List * tail() const {
 	  std::vector<Term *>::const_iterator it = _elements.begin();
 	  if (it != _elements.end()) {
 		  List  * tail = new List[10];
