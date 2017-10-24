@@ -43,7 +43,7 @@ public:
 	  if (it != _elements.end())
 		  return *it;
 	  else{
-	  throw "Accessing head in an empty list";
+	  throw std::out_of_range("Accessing head in an empty list");
 		  return 0;
 	  }
   }
