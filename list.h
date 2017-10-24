@@ -43,9 +43,10 @@ public:
 	 std::vector<Term *>::const_iterator it = _elements.begin();
 	  if (it != _elements.end())
 		  return *it;
-	  else
+	  else{
 	  throw std::out_of_range("Accessing head in an empty list");
-
+		  return 0;
+	  }
   }
   List * tail() const throw(string) {
 	  std::vector<Term *>::const_iterator it = _elements.begin();
@@ -55,10 +56,11 @@ public:
 			  tail->_elements.push_back(*it);
 		  return tail;
 	  }
-	  else
+	  else{
 		  throw std::out_of_range("Accessing tail in an empty list");
+		 return 0;
+	  }
   }
-
 private:
   vector<Term *> _elements ;
 };
