@@ -2,7 +2,7 @@
 #define LIST_H
 
 #include "atom.h"
-
+#include <stdexcept>
 #include <string>
 using std::string;
 
