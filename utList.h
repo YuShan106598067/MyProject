@@ -242,7 +242,7 @@ TEST(List, emptyExecptionOfTail) {
 	try {
 		l.tail();
 	}
-	catch (std::logic_error const& err) {
+	catch (std::exception const& err) {
 		cout = err.what();
 	}
 	EXPECT_EQ(string("Accessing tail in an empty list"), cout);
