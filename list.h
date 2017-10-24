@@ -41,10 +41,10 @@ public:
   }
   Term * head() const throw(string){
 	 std::vector<Term *>::const_iterator it = _elements.begin();
-	//  if (it != _elements.end())
+	  if (it != _elements.end())
 		  return *it;
-	  //else
-		//  throw std::logic_error("Accessing head in an empty list");
+	  else
+	  throw std::logic_error("Accessing head in an empty list");
 
   }
   List * tail() const throw(string) {
