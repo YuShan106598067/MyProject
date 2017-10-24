@@ -43,7 +43,7 @@ public:
 	  if (it != _elements.end())
 		  return *it;
 	  else{
-	  throw "Accessing head in an empty list";
+	  throw std::out_of_range("Accessing head in an empty list");
 		  return 0;
 	  }
   }
@@ -56,7 +56,7 @@ public:
 		  return tail;
 	  }
 	  else{
-		  throw "Accessing tail in an empty list";
+		  throw std::out_of_range("Accessing tail in an empty list");
 		 return 0;
 	  }
   }
