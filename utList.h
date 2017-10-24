@@ -226,7 +226,7 @@ TEST(List, emptyExecptionOfHead) {
 	try{
 		l.head();
 	}
-	catch (std::string const& err){
+	catch (std::exception const& err){
 		cout = err.what();
 	}
 	EXPECT_EQ(string("Accessing head in an empty list"), cout);
