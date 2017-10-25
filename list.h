@@ -56,7 +56,7 @@ public:
 		  return tail;
 	  }
 	  else{
-		  throw "Accessing tail in an empty list";
+		  throw ;
 		 return 0;
 	  }
   }
