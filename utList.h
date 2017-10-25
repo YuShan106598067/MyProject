@@ -226,8 +226,7 @@ TEST(List, emptyExecptionOfHead) {
 	try{
 		l.head();
 	}
-	catch (string e){
-		
+	catch (string e){		
 		EXPECT_EQ(string("Accessing head in an empty list"), e);
 	}
 	
@@ -237,16 +236,16 @@ TEST(List, emptyExecptionOfHead) {
 // When client still want to get the head of list
 // Then it should throw a string: "Accessing tail in an empty list" as an exception.
 TEST(List, emptyExecptionOfTail) {
-	/*vector<Term *> args = {};
+	vector<Term *> args = {};
 	List l(args);
 	string cout = new char[100];
 	try {
 		l.tail();
 	}
-	catch (std::out_of_range const& err) {
-		cout = err.what();
+	catch (string e) {
+		EXPECT_EQ(string("Accessing tail in an empty list"), e);
 	}
-	EXPECT_EQ(string("Accessing tail in an empty list"), cout);*/
+
 }
 
 
