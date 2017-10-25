@@ -166,7 +166,8 @@ TEST(List, matchVarinListToAtomShouldSucceed) {
 	List l2(args2);
 	y.match(l);
 	x.match(a);
-	ASSERT_TRUE(y.match(l2));
+	//ASSERT_TRUE(y.match(l2));
+	EXPECT_EQ(string("[496, alan_mathison_turing, terence_tao]"), y.value());
 	EXPECT_EQ(string("alan_mathison_turing"), x.value());
 }
 
