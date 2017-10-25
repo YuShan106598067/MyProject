@@ -222,7 +222,6 @@ TEST(List, headAndTailMatching4) {
 TEST(List, emptyExecptionOfHead) {
 	vector<Term *> args = {};
 	List l(args);
-	string cout= new char[100];
 	try{
 		l.head();
 	}
@@ -238,7 +237,6 @@ TEST(List, emptyExecptionOfHead) {
 TEST(List, emptyExecptionOfTail) {
 	vector<Term *> args = {};
 	List l(args);
-	string cout = new char[100];
 	try {
 		l.tail();
 	}
