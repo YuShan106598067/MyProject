@@ -43,7 +43,7 @@ public:
 	  if (it != _elements.end())
 		  return *it;
 	  else{
-	  throw "Accessing head in an empty list";
+	  throw string("Accessing head in an empty list");
 		  return 0;
 	  }
   }
@@ -56,10 +56,11 @@ public:
 		  return tail;
 	  }
 	  else{
-		  throw ;
+		  throw string("Accessing head in an empty list");
 		 return 0;
 	  }
   }
+
 private:
   vector<Term *> _elements ;
 };
