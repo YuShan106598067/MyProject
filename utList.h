@@ -226,10 +226,10 @@ TEST(List, emptyExecptionOfHead) {
 	try{
 		l.head();
 	}
-	catch (string e){
-		e;
+	catch (cout){
+		cout;
 	}
-	EXPECT_EQ(string("Accessing head in an empty list"), e);
+	EXPECT_EQ(string("Accessing head in an empty list"), cout);
 }
 
 // Given there is a empty list
