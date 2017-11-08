@@ -2,9 +2,9 @@ all: hw5
 
 hw5: main.o atom.o list.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw4 main.o atom.o list.o -lgtest
+	g++ -o hw5 main.o atom.o list.o -lgtest
 else
-	g++ -o hw4 main.o atom.o list.o -lgtest -lpthread
+	g++ -o hw5 main.o atom.o list.o -lgtest -lpthread
 endif
 	
 main.o: mainAtom.cpp utAtom.h utStruct.h utList.h utScanner.h utVariable.h
