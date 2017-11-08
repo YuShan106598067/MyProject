@@ -1,13 +1,13 @@
 all: hw5
 
-hw5: main.o atom.o list.o
+hw5: mainAtom.o atom.o list.o
 ifeq (${OS}, Windows_NT)
-	g++ -o hw5 main.o atom.o list.o -lgtest
+	g++ -o hw5 mainAtom.o atom.o list.o -lgtest
 else
-	g++ -o hw5 main.o atom.o list.o -lgtest -lpthread
+	g++ -o hw5 mainAtom.o atom.o list.o -lgtest -lpthread
 endif
 	
-main.o: mainAtom.cpp utAtom.h utStruct.h utParser.h utScanner.h utVariable.h
+mainAtom.o: mainAtom.cpp utAtom.h utStruct.h utParser.h utScanner.h utVariable.h
 	g++ -std=gnu++0x -c mainAtom.cpp
 	
 atom.o: atom.cpp atom.h variable.h
