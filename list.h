@@ -3,7 +3,8 @@
 
 #include "atom.h"
 #include <vector>
-#include <string>
+#include <string.h>  
+#include <string>  
 #include <typeinfo>
 #include <iostream>
 using std::vector;
