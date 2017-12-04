@@ -15,7 +15,7 @@ struct.o:struct.cpp struct.h
 		g++ -std=c++11 -c struct.cpp	
 
 mainIterator.o: mainIterator.cpp utIterator.h
-	g++ -std=c++11 -c mainIterator.cpp
+	g++ -std=gnu++0x -c mainIterator.cpp
 
 clean:
 ifeq (${OS}, Windows_NT)
