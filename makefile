@@ -1,20 +1,13 @@
 all: hw7
 
-hw7: mainAtom.o atom.o list.o
-ifeq (${OS}, Windows_NT)
-	g++ -o hw7 mainAtom.o atom.o list.o -lgtest
-else
-	g++ -o hw7 mainAtom.o atom.o list.o -lgtest -lpthread
-endif
+hw7: utIterator
 	
-mainAtom.o: mainAtom.cpp utAtom.h utStruct.h 
-	g++ -std=gnu++0x -c mainAtom.cpp
-	
-atom.o: atom.cpp atom.h variable.h
-	g++ -std=c++11 -c atom.cpp
+utIterator: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h
+	g++ -o utIterator mainIterator.o atom.o list.o struct.o -lgtest -lpthread
 
-list.o: list.cpp list.h atom.h variable.h
-	g++ -std=c++11 -c list.cpp
+
+mainIterator.o: mainIterator.cpp utIterator.h
+	g++ -std=c++11 -c mainIterator.cpp
 
 clean:
 ifeq (${OS}, Windows_NT)
