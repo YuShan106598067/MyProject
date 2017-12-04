@@ -1,6 +1,6 @@
 all: hw7
 
-hw7: mainAtom.o atom.o list.o
+hw7: mainIterator.o atom.o list.o struct.o
 ifeq (${OS}, Windows_NT)
 	g++ -o hw7	mainIterator.o atom.o list.o struct.o -lgtest
 else
