@@ -7,7 +7,7 @@ else
 	g++ -o hw7	mainAtom.o atom.o list.o -lgtest -lpthread
 endif
 	
-mainAtom.o: mainAtom.cpp utAtom.h utStruct.h utScanner.h utVariable.h utParser.h
+mainAtom.o: mainAtom.cpp utAtom.h 
 	g++ -std=gnu++0x -c mainAtom.cpp
 	
 atom.o: atom.cpp atom.h variable.h
@@ -20,7 +20,7 @@ clean:
 ifeq (${OS}, Windows_NT)
 	del *.o *.exe
 else
-	rm -f *.o hw* utAtom.h utStruct.h 
+	rm -f *.o hw* utAtom.h 
 endif
 
 stat:
