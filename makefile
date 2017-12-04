@@ -1,3 +1,5 @@
+all: hw7
+
 hw7: utAtom utVariable utScanner utIterator
 
 utAtom: mainAtom.o atom.o struct.o
