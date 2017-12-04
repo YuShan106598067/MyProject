@@ -1,8 +1,8 @@
 #ifndef ATOM_H
 #define ATOM_H
 
-#include <string>
-#include <sstream>
+#include <string.h> 
+#include <sstream.h>
 using std::string;
 
 class Iterator;
