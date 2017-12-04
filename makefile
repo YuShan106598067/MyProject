@@ -6,16 +6,16 @@ utIterator: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h
 	g++ -o utIterator mainIterator.o atom.o list.o struct.o -lgtest -lpthread
 	
 atom.o: atom.cpp atom.h variable.h
-	g++ -std=c++11 -c atom.cpp
+	-std=gnu11 -c atom.cpp
 
 list.o: list.cpp list.h atom.h variable.h
-	g++ -std=c++11 -c list.cpp	
+	-std=gnu11 -c list.cpp	
 	
 struct.o:struct.cpp struct.h
-		g++ -std=c++11 -c struct.cpp	
+	-std=gnu11 -c struct.cpp	
 
 mainIterator.o: mainIterator.cpp utIterator.h
-	g++ -std=c++11 -c mainIterator.cpp
+	-std=gnu11 -c mainIterator.cpp
 
 clean:
 ifeq (${OS}, Windows_NT)
