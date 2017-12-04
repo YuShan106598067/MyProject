@@ -4,7 +4,7 @@ hw7: mainAtom.o atom.o list.o
 ifeq (${OS}, Windows_NT)
 	g++ -o hw7 mainAtom.o atom.o list.o -lgtest
 else
-	g++ -o hw7	mainAtom.o atom.o list.o -lgtest -lpthread
+	g++ -o hw7 mainAtom.o atom.o list.o -lgtest -lpthread
 endif
 	
 mainAtom.o: mainAtom.cpp utAtom.h utStruct.h utScanner.h utVariable.h utParser.h
