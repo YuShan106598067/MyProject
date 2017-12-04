@@ -2,7 +2,7 @@
 #define ATOM_H
 
 #include <string.h> 
-#include <sstream.h>
+#include <sstream>
 using std::string;
 
 class Iterator;
