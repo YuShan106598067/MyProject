@@ -3,8 +3,7 @@
 
 #include "atom.h"
 #include <vector>
-#include <string.h>  
-#include <string>  
+#include <string>
 #include <typeinfo>
 #include <iostream>
 using std::vector;
@@ -25,9 +24,9 @@ public:
     return _elements[index];
   }
   int arity() const {return _elements.size();}
-  Iterator* createIterator();
-  Iterator* createDFSIterator();
-  Iterator* createBFSIterator();
+  Iterator<Term*> * createIterator();
+  Iterator<Term*> * createDFSIterator();
+  Iterator<Term*> * createBFSIterator();
 
 private:
   vector<Term *> _elements;
