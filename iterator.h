@@ -10,6 +10,7 @@
 
 using namespace std;
 
+template <class T >
 class Iterator {
 public:
   virtual void first() = 0;
@@ -17,8 +18,9 @@ public:
   virtual Term* currentItem() const = 0;
   virtual bool isDone() const = 0;
 };
-template <class T>
-class NullIterator :public Iterator{
+
+template <class T >
+class NullIterator :public Iterator<T>{
 public:
   NullIterator(T n){}
   void first(){}
@@ -31,8 +33,8 @@ public:
   }
 
 };
-template <class T>
-class StructIterator :public Iterator {
+template <class T >
+class StructIterator :public Iterator<T>{
 public:
   friend class Struct;
   void first() {
@@ -55,8 +57,8 @@ private:
   int _index;
   Struct* _s;
 };
-template <class T>
-class ListIterator :public Iterator {
+template <class T >
+class ListIterator :public Iterator<T>{
 public:
   ListIterator(List *list): _index(0), _list(list) {}
 
@@ -79,8 +81,8 @@ private:
   int _index;
   List* _list;
 };
-template <class T>
-class DFSIterator : public Iterator{
+template <class T >
+class DFSIterator : public Iterator<T>{
 public:
   DFSIterator(T term):_term(term),_index(0){
     
@@ -124,7 +126,7 @@ public:
         _dfsTerms.push_back(term);
       }
        
-      Iterator * it=term->createIterator();
+      Iterator<T> * it=term->createIterator();
       
       rev.clear();
       for(it->first();!it->isDone();it->next()){
@@ -151,8 +153,8 @@ public:
     T _term;
     int _index;
 };
-template <class T>
-class BFSIterator : public Iterator {
+template <class T >
+class BFSIterator : public Iterator<T>{
 public:
   BFSIterator(T term):_term(term),_index(0){
     
@@ -169,7 +171,7 @@ public:
       if(_term!=term){
         _bfsTerms.push_back(term);
       }
-      Iterator * it=term->createIterator();
+      Iterator<T> * it=term->createIterator();
       for(it->first();!it->isDone();it->next()){
         que.push(it->currentItem());
       }
