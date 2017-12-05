@@ -20,10 +20,10 @@ public:
 template <class T>
 class NullIterator :public Iterator{
 public:
-  NullIterator(T *n){}
+  NullIterator(T n){}
   void first(){}
   void next(){}
-  T * currentItem() const{
+  T  currentItem() const{
       return nullptr;
   }
   bool isDone() const{
@@ -39,7 +39,7 @@ public:
     _index = 0;
   }
 
-  Term* currentItem() const {
+  T currentItem() const {
     return _s->args(_index);
   }
 
@@ -64,7 +64,7 @@ public:
     _index = 0;
   }
 
-  T* currentItem() const {
+  T currentItem() const {
     return _list->args(_index);
   }
 
@@ -82,7 +82,7 @@ private:
 template <class T>
 class DFSIterator : public Iterator{
 public:
-  DFSIterator(T* term):_term(term),_index(0){
+  DFSIterator(T term):_term(term),_index(0){
     
   }
   //s(1, t(1,2), X)
@@ -112,9 +112,9 @@ public:
   */
    void first(){
     _index = 0;
-    T* term;
-    std::stack<T*> stk;
-    std::vector<T*> rev;
+    T term;
+    std::stack<T> stk;
+    std::vector<T> rev;
     stk.push(_term);
     
     while(!stk.empty()){
@@ -140,27 +140,27 @@ public:
    void next(){
     _index++;
    }
-   Term* currentItem() const{
+   T currentItem() const{
     return _dfsTerms[_index];
    }
    bool isDone() const{
     return _index >= _dfsTerms.size();
    }
   private:
-    std::vector<T*> _dfsTerms;
-    T* _term;
+    std::vector<T> _dfsTerms;
+    T _term;
     int _index;
 };
 template <class T>
 class BFSIterator : public Iterator {
 public:
-  BFSIterator(T* term):_term(term),_index(0){
+  BFSIterator(T term):_term(term),_index(0){
     
   }
    void first(){
-     T * term;
+     T  term;
      _index = 0;
-     queue<T*> que;
+     queue<T> que;
      que.push(_term);
      while(!que.empty()) {
       term = que.front();
@@ -178,7 +178,7 @@ public:
    void next(){
     _index++;
    }
-   T* currentItem() const{
+   T currentItem() const{
     return _bfsTerms[_index];
    }
    bool isDone() const{
@@ -187,8 +187,8 @@ public:
 
     
   private:
-    std::vector<T*> _bfsTerms;
-    T* _term;
+    std::vector<T> _bfsTerms;
+    T _term;
     int _index;
 
 };
