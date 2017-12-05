@@ -17,13 +17,13 @@ public:
   virtual Term* currentItem() const = 0;
   virtual bool isDone() const = 0;
 };
-
+template <class T>
 class NullIterator :public Iterator{
 public:
-  NullIterator(Term *n){}
+  NullIterator(T *n){}
   void first(){}
   void next(){}
-  Term * currentItem() const{
+  T * currentItem() const{
       return nullptr;
   }
   bool isDone() const{
@@ -31,7 +31,7 @@ public:
   }
 
 };
-
+template <class T>
 class StructIterator :public Iterator {
 public:
   friend class Struct;
@@ -55,7 +55,7 @@ private:
   int _index;
   Struct* _s;
 };
-
+template <class T>
 class ListIterator :public Iterator {
 public:
   ListIterator(List *list): _index(0), _list(list) {}
@@ -64,7 +64,7 @@ public:
     _index = 0;
   }
 
-  Term* currentItem() const {
+  T* currentItem() const {
     return _list->args(_index);
   }
 
@@ -79,10 +79,10 @@ private:
   int _index;
   List* _list;
 };
-
+template <class T>
 class DFSIterator : public Iterator{
 public:
-  DFSIterator(Term* term):_term(term),_index(0){
+  DFSIterator(T* term):_term(term),_index(0){
     
   }
   //s(1, t(1,2), X)
@@ -112,9 +112,9 @@ public:
   */
    void first(){
     _index = 0;
-    Term* term;
-    std::stack<Term*> stk;
-    std::vector<Term*> rev;
+    T* term;
+    std::stack<T*> stk;
+    std::vector<T*> rev;
     stk.push(_term);
     
     while(!stk.empty()){
@@ -147,20 +147,20 @@ public:
     return _index >= _dfsTerms.size();
    }
   private:
-    std::vector<Term*> _dfsTerms;
-    Term* _term;
+    std::vector<T*> _dfsTerms;
+    T* _term;
     int _index;
 };
-
+template <class T>
 class BFSIterator : public Iterator {
 public:
-  BFSIterator(Term* term):_term(term),_index(0){
+  BFSIterator(T* term):_term(term),_index(0){
     
   }
    void first(){
-     Term * term;
+     T * term;
      _index = 0;
-     queue<Term*> que;
+     queue<T*> que;
      que.push(_term);
      while(!que.empty()) {
       term = que.front();
@@ -178,7 +178,7 @@ public:
    void next(){
     _index++;
    }
-   Term* currentItem() const{
+   T* currentItem() const{
     return _bfsTerms[_index];
    }
    bool isDone() const{
@@ -187,8 +187,8 @@ public:
 
     
   private:
-    std::vector<Term*> _bfsTerms;
-    Term* _term;
+    std::vector<T*> _bfsTerms;
+    T* _term;
     int _index;
 
 };
