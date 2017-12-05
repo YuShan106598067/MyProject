@@ -4,17 +4,17 @@
 #include "iterator.h"
 
 
-Iterator * Term::createIterator(){
+Iterator<Term*> * Term::createIterator(){
   return new NullIterator<Term*>(this);
 }
 
 
-Iterator * Term::createDFSIterator()
+Iterator<Term*> * Term::createDFSIterator()
 {
   return new NullIterator<Term*>(this);
 }
 
-Iterator * Term::createBFSIterator()
+Iterator<Term*> * Term::createBFSIterator()
 {
   return new NullIterator<Term*>(this);
 }
