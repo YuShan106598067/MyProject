@@ -15,7 +15,7 @@ TEST(iterator, first) {
     Struct t(Atom("t"), { &X, &two });
     Struct s(Atom("s"), { &one, &t, &Y });
     // StructIterator it(&s);
-    Iterator *itStruct = s.createIterator();
+    Iterator<Term*> *itStruct = s.createIterator();
     // Iterator& itStruct = it;
     // ASSERT_EQ(it.first()->symbol());
     itStruct->first();
@@ -37,12 +37,12 @@ TEST(iterator, nested_iterator) {
   Number two(2);
   Struct t(Atom("t"), { &X, &two });
   Struct s(Atom("s"), { &one, &t, &Y });
-  Iterator *it = s.createIterator();
+  Iterator<Term*> *it = s.createIterator();
   it->first();
   it->next();
   Struct *s2 = dynamic_cast<Struct *>(it->currentItem());
 
-  Iterator *it2 = s2->createIterator();
+  Iterator<Term*> *it2 = s2->createIterator();
   it2->first();
   ASSERT_EQ("X", it2->currentItem()->symbol());
   ASSERT_FALSE(it2->isDone());
@@ -61,7 +61,7 @@ TEST(iterator, firstList) {
     Struct t(Atom("t"), { &X, &two });
     List l({ &one, &t, &Y });
     ListIterator <Term*>it(&l);
-    Iterator* itList = &it;
+    Iterator<Term*> * itList = &it;
     itList->first();
     ASSERT_EQ("1", itList->currentItem()->symbol());
     ASSERT_FALSE(itList->isDone());
@@ -79,7 +79,7 @@ TEST(iterator, NullIterator){
   NullIterator<Term*> nullIterator(&one);
   nullIterator.first();
   ASSERT_TRUE(nullIterator.isDone());
-  Iterator * it = one.createIterator();
+  Iterator<Term*> * it = one.createIterator();
   it->first();
   ASSERT_TRUE(it->isDone());
 }
@@ -87,7 +87,7 @@ TEST(iterator, NullIterator){
 TEST(iterator, AtomTreeIterator)
 {
   Atom atom("atom");
-  Iterator *it = atom.createDFSIterator();
+  Iterator<Term*> *it = atom.createDFSIterator();
   it->first();
   ASSERT_TRUE(it->isDone());
 
@@ -129,7 +129,7 @@ TEST(iterator,TreeDfsIterator){
   Struct t(Atom("t"), v);
   vector<Term*> v2 = {&_1,&t,&X};
   Struct s(Atom("s"), v2);
-  Iterator *it = s.createDFSIterator();
+  Iterator<Term*> *it = s.createDFSIterator();
   it->first();
   ASSERT_EQ("1", it->currentItem()->symbol());
   it->next();
@@ -147,7 +147,7 @@ TEST(iterator,TreeDfsIterator){
 TEST(iterator,TreeDfsIteratorEmpty){
   vector<Term*> v = {};
   Struct t(Atom("t"), v);
-  Iterator *it = t.createDFSIterator();
+  Iterator<Term*> *it = t.createDFSIterator();
   it->first();
   ASSERT_TRUE(it->isDone());
 }
@@ -159,7 +159,7 @@ TEST(iterator, TreeBFSIterator) {
   Struct t(Atom("t"), v);
   vector<Term*> v2 = {&_1,&t,&X};
   Struct s(Atom("s"), v2);
-  Iterator *it = s.createBFSIterator();
+  Iterator<Term*> *it = s.createBFSIterator();
   it->first();
   ASSERT_EQ("1",it->currentItem()->symbol());
   it->next();
@@ -183,7 +183,7 @@ TEST (iterator, TreeBFSIteratorList) {
   Struct t(Atom("t"), v);
   vector<Term*> v2 = {&_1,&t,&X};
   List l(v2);
-  Iterator *it = l.createBFSIterator();
+  Iterator<Term*> *it = l.createBFSIterator();
   it->first();
   ASSERT_EQ("1",it->currentItem()->symbol());
   it->next();
@@ -205,7 +205,7 @@ TEST (iterator, TreeDFSIteratorList) {
   Struct t(Atom("t"), v);
   vector<Term*> v2 = {&_1,&t,&X};
   List l(v2);
-  Iterator *it = l.createDFSIterator();
+  Iterator<Term*> *it = l.createDFSIterator();
   it->first();
   ASSERT_EQ("1", it->currentItem()->symbol());
   it->next();
