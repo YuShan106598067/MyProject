@@ -3,8 +3,7 @@
 
 #include "atom.h"
 #include <vector>
-#include <string.h>  
-#include <string>  
+#include <string>
 
 using std::string;
 
@@ -41,9 +40,9 @@ public:
     return ret;
   }
   int arity() const {return _args.size();}
-  Iterator * createIterator();
-  Iterator* createDFSIterator();
-  Iterator* createBFSIterator();
+  Iterator<Term*> * createIterator();
+  Iterator<Term*> * createDFSIterator();
+  Iterator<Term*> * createBFSIterator();
 private:
   Atom _name;
   std::vector<Term *> _args;
