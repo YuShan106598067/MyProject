@@ -19,9 +19,9 @@ Iterator * Term::createBFSIterator()
   return new NullIterator<Term*>(this);
 }
 
-/*bool Term::match(Term & a){
+bool Term::match(Term & a){
   if (typeid(a) ==  typeid(Variable))
     return a.match(*this);
   else
     return symbol() == a.symbol();
-}*/
+}
