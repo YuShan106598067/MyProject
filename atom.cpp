@@ -5,18 +5,18 @@
 
 
 Iterator<Term*> * Term::createIterator(){
-  return new NullIterator<Term*>(this);
+  return new NullIterator(this);
 }
 
 
 Iterator<Term*> * Term::createDFSIterator()
 {
-  return new NullIterator<Term*>(this);
+  return new NullIterator(this);
 }
 
 Iterator<Term*> * Term::createBFSIterator()
 {
-  return new NullIterator<Term*>(this);
+  return new NullIterator(this);
 }
 
 bool Term::match(Term & a){
