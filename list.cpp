@@ -1,4 +1,4 @@
-/*#include "atom.h"
+#include "atom.h"
 #include "variable.h"
 #include <typeinfo>
 #include <iostream>
@@ -95,4 +95,4 @@ Iterator * List::createDFSIterator(){
   
 Iterator * List::createBFSIterator(){
     return new BFSIterator<Term*>(this);
-}*/
+}
