@@ -1,21 +1,22 @@
+#include <typeinfo>
 #include "atom.h"
 #include "variable.h"
 #include "iterator.h"
-#include <typeinfo>
+
 
 Iterator * Term::createIterator(){
-  return new NullIterator(this);
+  return new NullIterator<Term>(this);
 }
 
 
 Iterator * Term::createDFSIterator()
 {
-  return new NullIterator(this);
+  return new NullIterator<Term>(this);
 }
 
 Iterator * Term::createBFSIterator()
 {
-  return new NullIterator(this);
+  return new NullIterator<Term>(this);
 }
 
 bool Term::match(Term & a){
