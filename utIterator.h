@@ -60,7 +60,7 @@ TEST(iterator, firstList) {
     Number two(2);
     Struct t(Atom("t"), { &X, &two });
     List l({ &one, &t, &Y });
-    ListIterator <Term*>it(&l);
+    ListIterator it(&l);
     Iterator<Term*> * itList = &it;
     itList->first();
     ASSERT_EQ("1", itList->currentItem()->symbol());
@@ -76,7 +76,7 @@ TEST(iterator, firstList) {
 
 TEST(iterator, NullIterator){
   Number one(1);
-  NullIterator<Term*> nullIterator(&one);
+  NullIterator nullIterator(&one);
   nullIterator.first();
   ASSERT_TRUE(nullIterator.isDone());
   Iterator<Term*> * it = one.createIterator();
@@ -94,8 +94,31 @@ TEST(iterator, AtomTreeIterator)
   it = atom.createBFSIterator();
   it->first();
   ASSERT_TRUE(it->isDone());
+}
+TEST(iterator, NumberTreeIterator)
+{
+  Number one(1);
+  Iterator<Term*> *it = one.createDFSIterator();
+  it->first();
+  ASSERT_TRUE(it->isDone());
 
-
+  it = one.createBFSIterator();
+  it->first();
+  ASSERT_TRUE(it->isDone());
+}
+TEST(iterator,TreeDfsIteratorEmpty){
+  vector<Term*> v = {};
+  Struct t(Atom("t"), v);
+  Iterator<Term*> *it = t.createDFSIterator();
+  it->first();
+  ASSERT_TRUE(it->isDone());
+}
+TEST(iterator,TreeBfsIteratorEmpty){
+  vector<Term*> v = {};
+  Struct t(Atom("t"), v);
+  Iterator<Term*> *it = t.createBFSIterator();
+  it->first();
+  ASSERT_TRUE(it->isDone());
 }
 //s(1, t(1,2), X)
 /*
@@ -122,7 +145,7 @@ Queue: [1 2]           Output: 1, t(1,2), X
 Queue: [2]             Output: 1, t(1,2), X, 1
 Queue: []              Output: 1, t(1,2), X, 1, 2
 */
-TEST(iterator,TreeDfsIterator){
+TEST(iterator,TreeDfsIteratorStruct){
   Number _1(1) , _2(2);
   Variable X("X");
   vector<Term*> v = {&_1,&_2};
@@ -144,15 +167,9 @@ TEST(iterator,TreeDfsIterator){
   ASSERT_TRUE(it->isDone());
 }
 
-TEST(iterator,TreeDfsIteratorEmpty){
-  vector<Term*> v = {};
-  Struct t(Atom("t"), v);
-  Iterator<Term*> *it = t.createDFSIterator();
-  it->first();
-  ASSERT_TRUE(it->isDone());
-}
 
-TEST(iterator, TreeBFSIterator) {
+
+TEST(iterator, TreeBFSIteratorStruct) {
   Number _1(1) , _2(2);
   Variable X("X");
   vector<Term*> v = {&_1,&_2};
