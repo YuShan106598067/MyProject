@@ -2,12 +2,12 @@
 #include "iterator.h"
 Iterator<Term*> * Struct::createIterator()
 {
-  return new StructIterator<Term*>(this);
+  return new StructIterator(this);
 }
 Iterator<Term*> * Struct::createDFSIterator(){
-  return new DFSIterator<Term*>(this);
+  return new DFSIterator(this);
 }
 
 Iterator<Term*> * Struct::createBFSIterator(){
-  return new BFSIterator<Term*>(this);
+  return new BFSIterator(this);
 }
