@@ -1,6 +1,6 @@
 #ifndef PARSER_H
 #define PARSER_H
-#include <string>
+#include <cstring>
 using std::string;
 
 #include "atom.h"
