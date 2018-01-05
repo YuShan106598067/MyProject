@@ -1,13 +1,9 @@
-all: utVariable utScanner
+all:  utScanner
 
 
 atom.o: atom.cpp atom.h variable.h
 	g++ -std=c++11 -c atom.cpp
 
-utVariable: mainVariable.o atom.o
-		g++ -o utVariable  atom.o -lgtest -lpthread
-mainVariable.o: mainVariable.cpp utVariable.h variable.h
-		g++ -std=gnu++0x  mainVariable.cpp
 list.o:list.cpp list.h
 		g++ -std=c++11 -c list.cpp
 
@@ -17,6 +13,6 @@ mainScanner.o: mainScanner.cpp utScanner.h scanner.h  atom.h struct.h variable.h
 		g++ -std=c++11 -c mainScanner.cpp
 
 clean:
-	rm -f *.o utVariable utScanner
+	rm -f *.o utScanner
 stat:
 	wc *.h *.cpp
