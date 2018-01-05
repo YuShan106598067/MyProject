@@ -5,9 +5,9 @@ atom.o: atom.cpp atom.h variable.h
 	g++ -std=c++11 -c atom.cpp
 
 utVariable: mainVariable.o atom.o
-		g++ -o utVariable mainVariable.o atom.o -lgtest -lpthread
+		g++ -o utVariable  atom.o -lgtest -lpthread
 mainVariable.o: mainVariable.cpp utVariable.h variable.h
-		g++ -std=gnu++0x -c mainVariable.cpp
+		g++ -std=gnu++0x  mainVariable.cpp
 list.o:list.cpp list.h
 		g++ -std=c++11 -c list.cpp
 
