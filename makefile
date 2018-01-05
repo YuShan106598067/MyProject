@@ -3,7 +3,7 @@ all: hw8
 hw8: utIterator
 	
 utIterator: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h
-	g++ -o mainIterator.o atom.o list.o struct.o -lgtest -lpthread
+	g++ -o mainIterator.o atom.o list.o struct.o -lgtest 
 	
 atom.o: atom.cpp atom.h variable.h
 	g++ -std=c++11 -c atom.cpp
