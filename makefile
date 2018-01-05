@@ -3,7 +3,7 @@ all: utAtom utVariable utScanner utIterator
 utAtom: mainAtom.o list.o atom.o struct.o
 	g++ -o utAtom mainAtom.o atom.o list.o struct.o  -lgtest -lpthread
 mainAtom.o: mainAtom.cpp utList.h utAtom.h atom.h utStruct.h struct.h 
-	g++ -std=c++11 -c mainAtom.cpp
+	g++ -std=gnu++0x mainAtom.cpp
 
 atom.o: atom.cpp atom.h variable.h
 	g++ -std=c++11 -c atom.cpp
