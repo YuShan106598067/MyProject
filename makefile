@@ -1,9 +1,6 @@
-all: madRace utAtom utVariable utScanner utIterator
+all: utAtom utVariable utScanner utIterator
 
-madRace: mainMadRace.o
-	g++ -o madRace mainMadRace.o -lgtest -lpthread
-mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
-	g++ -std=c++11 -c mainMadRace.cpp
+
 
 utAtom: mainAtom.o list.o atom.o struct.o
 	g++ -o utAtom mainAtom.o atom.o list.o struct.o  -lgtest -lpthread
@@ -51,6 +48,6 @@ mainIterator.o: mainIterator.cpp utIterator.h
 #list.o: list.h list.cpp term.h var.h
 #	g++ -std=c++11 -c list.cpp
 clean:
-	rm -f *.o madRace utAtom utVariable utScanner
+	rm -f *.o utAtom utVariable utScanner
 stat:
 	wc *.h *.cpp
