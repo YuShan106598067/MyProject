@@ -1,7 +1,7 @@
 #ifndef ATOM_H
 #define ATOM_H
 
-#include <string>
+#include <cstring>
 #include <sstream>
 using std::string;
 
