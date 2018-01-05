@@ -8,7 +8,7 @@ mainAtom.o: mainAtom.cpp utList.h utAtom.h atom.h utStruct.h struct.h exception.
 	g++ -std=c++11 -c mainAtom.cpp
 
 atom.o: atom.cpp atom.h variable.h
-	g++ -std=c++11 -c atom.cpp
+	g++ -std=gnu++0x atom.cpp
 
 utVariable: mainVariable.o atom.o struct.o
 		g++ -o utVariable mainVariable.o atom.o struct.o -lgtest -lpthread
