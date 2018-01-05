@@ -4,7 +4,7 @@
 #include "global.h"
 
 
-#include <string>
+#include <cstring>
 #include <vector>
 using std::string;
 using std::vector;
