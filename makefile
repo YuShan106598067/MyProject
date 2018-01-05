@@ -1,9 +1,4 @@
-all: madRace utVariable utScanner
-
-madRace: mainMadRace.o
-	g++ -o madRace mainMadRace.o -lgtest -lpthread
-mainMadRace.o: mainMadRace.cpp madRace.h utMadRace.h
-	g++ -std=c++11 -c mainMadRace.cpp
+all: utVariable utScanner
 
 
 atom.o: atom.cpp atom.h variable.h
@@ -22,6 +17,6 @@ mainScanner.o: mainScanner.cpp utScanner.h scanner.h  atom.h struct.h variable.h
 		g++ -std=c++11 -c mainScanner.cpp
 
 clean:
-	rm -f *.o madRace utAtom utVariable utScanner
+	rm -f *.o utVariable utScanner
 stat:
 	wc *.h *.cpp
