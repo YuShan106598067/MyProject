@@ -154,6 +154,9 @@ public:
 	  }
 	  return all;
   }
+bool matchings() {
+    return false;
+  }
 
 private:
   FRIEND_TEST(ParserTest, createArgs);
