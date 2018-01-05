@@ -5,7 +5,7 @@
 
 using std::pair;
 
-#include <string>
+#include <cstring>
 using std::string;
 
 const int NONE = -1; // no tokenValue
