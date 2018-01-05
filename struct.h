@@ -3,7 +3,7 @@
 
 #include "atom.h"
 #include <vector>
-#include <string>
+#include <cstring>
 
 using std::string;
 
