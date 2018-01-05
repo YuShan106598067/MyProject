@@ -1,7 +1,7 @@
 #ifndef VARIABLE_H
 #define VARIABLE_H
 
-#include <string>
+#include <cstring>
 #include "atom.h"
 using std::string;
 
