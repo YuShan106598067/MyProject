@@ -1,31 +1,29 @@
-all: hw8
+all:  hw8
 
-hw8: utIterator
-	
-utIterator: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h
+hw8:mainScanner.o atom.o list.o struct.o scanner.h  parser.h exception.h
 ifeq (${OS}, Windows_NT)
-	g++ -o utIterator mainIterator.o atom.o list.o struct.o -lgtest 
+	g++ -o hw8 mainScanner.o atom.o list.o struct.o -lgtest
 else
-	g++ -o utIterator mainIterator.o atom.o list.o struct.o -lgtest -lpthread
-endif	
-	
+	g++ -o hw8 mainScanner.o atom.o list.o struct.o -lgtest -lpthread
+endif
+
+
 atom.o: atom.cpp atom.h variable.h
-	g++ -std=c++11 -c atom.cpp
+	g++ --std=gnu++0x -c atom.cpp
 
-list.o: list.cpp list.h atom.h variable.h
-	g++ -std=c++11 -c list.cpp	
-	
+list.o:list.cpp list.h
+		g++ -std=gnu++0x -c list.cpp
 struct.o:struct.cpp struct.h
-		g++ -std=c++11 -c struct.cpp	
+		g++ -std=gnu++0x -c struct.cpp
 
-mainIterator.o: mainIterator.cpp utIterator.h
-	g++ -std=gnu++0x -c mainIterator.cpp
+mainScanner.o: mainScanner.cpp  scanner.h  atom.h struct.h variable.h parser.h   exception.h  
+		g++ -std=gnu++0x -c mainScanner.cpp
 
 clean:
 ifeq (${OS}, Windows_NT)
 	del *.o *.exe
 else
-	rm -f *.o hw* utAtom.h utStruct.h
+	rm -f *.o madRace utAtom utVariable utScanner hw8
 endif
 
 stat:
