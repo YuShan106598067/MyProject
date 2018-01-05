@@ -13,7 +13,7 @@ atom.o: atom.cpp atom.h variable.h
 utVariable: mainVariable.o atom.o struct.o
 		g++ -o utVariable mainVariable.o atom.o struct.o -lgtest -lpthread
 mainVariable.o: mainVariable.cpp utVariable.h variable.h
-		g++ -std=c++11 -c mainVariable.cpp
+		g++ -std=gnu++0x mainVariable.cpp
 list.o:list.cpp list.h
 		g++ -std=gnu++0x list.cpp
 struct.o:struct.cpp struct.h
@@ -26,13 +26,13 @@ struct.o:struct.cpp struct.h
 utScanner: mainScanner.o atom.o list.o struct.o scanner.h utScanner.h utParser.h parser.h
 	g++ -o utScanner mainScanner.o atom.o list.o struct.o -lgtest -lpthread
 mainScanner.o: mainScanner.cpp utScanner.h scanner.h  atom.h struct.h variable.h  utParser.h parser.h utExp.h
-		g++ -std=c++11 -c mainScanner.cpp
+		g++ -std=gnu++0x mainScanner.cpp
 utIterator: mainIterator.o atom.o list.o struct.o iterator.h utIterator.h
 	g++ -o utIterator mainIterator.o atom.o list.o struct.o -lgtest -lpthread
 
 
 mainIterator.o: mainIterator.cpp utIterator.h
-	g++ -std=c++11 -c mainIterator.cpp
+	g++ -std=gnu++0x mainIterator.cpp
 
 
 #utTerm: mainTerm.o term.o struct.o var.o list.o
