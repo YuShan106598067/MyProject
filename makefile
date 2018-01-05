@@ -15,9 +15,9 @@ utVariable: mainVariable.o atom.o struct.o
 mainVariable.o: mainVariable.cpp utVariable.h variable.h
 		g++ -std=c++11 -c mainVariable.cpp
 list.o:list.cpp list.h
-		g++ -std=c++11 -c list.cpp
+		g++ -std=gnu++0x list.cpp
 struct.o:struct.cpp struct.h
-		g++ -std=c++11 -c struct.cpp
+		g++ -std=gnu++0x struct.cpp
 #exp: mainExp.o
 #	g++ -o exp mainExp.o -lgtest -lpthread
 #mainExp.o: mainExp.cpp exp.h global.h
