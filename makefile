@@ -1,6 +1,6 @@
 all:  hw8
 
-hw8:mainScanner.o atom.o list.o struct.o scanner.h  parser.h expression.h shell.h
+hw8:mainScanner.o atom.o list.o struct.o scanner.h  parser.h exception.h
 ifeq (${OS}, Windows_NT)
 	g++ -o hw8 mainScanner.o atom.o list.o struct.o -lgtest
 else
@@ -19,7 +19,7 @@ list.o:list.cpp list.h
 struct.o:struct.cpp struct.h
 		g++ -std=gnu++0x -c struct.cpp
 
-mainScanner.o: mainScanner.cpp  scanner.h  atom.h struct.h variable.h   expression.h  parser.h shell.h
+mainScanner.o: mainScanner.cpp  scanner.h  atom.h struct.h variable.h   exception.h  parser.h 
 		g++ -std=gnu++0x -c mainScanner.cpp
 
 clean:
